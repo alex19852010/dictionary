@@ -4,59 +4,69 @@
 
 using namespace std;
 
+map<string, string> directory;
+
+
 int main() {
-
-    string number;
-    string surname;
-
-    while(1)
-    {
+    while (1) {
+        string choice;
+        string number;
+        string surname;
         cout << "enter number:";
         cin >> number;
         cout << "enter surname:";
         cin >> surname;
+        directory.insert(pair<string, string>(number, surname));
 
-        map <string, string> directory;
-        directory.insert(pair <string, string> (number, surname));
-        string command;
-        cout << "if you want to find the number,enter the word surname,if you want to find the surname,enter the word number:";
-        cin >> command;
+        cout << "if you want know the number click surname or if you want know the surname click number." << endl;
+        cout << "click  surname or number:";
+        cin >> choice;
 
-        if(command == "surname")
-        {
+
+        if (choice == "surname") {
             cout << "enter surname:";
             cin >> surname;
-            for(map <string, string> :: iterator it = directory.begin(); it != directory.end(); it ++)
-            {
-                if(surname == it->second)
-                {
-                    cout << it->first << endl;
+            int count_1 = 0;
+            for (map<string, string>::iterator it = directory.begin(); it != directory.end(); it++) {
+                if (surname == it->second) {
+                    cout << it->first << " ";
+                    count_1 ++;
                 }
+
             }
+            if(!count_1)
+            {
+                cout <<  "there is no such surname." << endl;
+                continue;
+            }
+
+            cout << endl;
 
         }
 
-        else if(command == "number")
-        {
+        else if (choice == "number") {
             cout << "enter number:";
             cin >> number;
-            for(map <string, string> :: iterator it = directory.begin(); it != directory.end(); it ++)
-            {
-                if(number == it->first)
-                {
+            int count_2 = 0;
+            for (map<string, string>::iterator it = directory.begin(); it != directory.end(); it++) {
+                if (number == it->first) {
                     cout << it->second << endl;
+                    count_2 ++;
                 }
+
             }
+                if(!count_2)
+                {
+                  cout <<  "there is no such number." << endl;
+                  continue;
+                }
         }
-        else
-        {
-            cout << "incorrect information" << endl;
-            continue;
-        }
+            else {
+              cout << "invalid information" << endl;
+              continue;
+            }
 
     }
-
-
     return 0;
 }
 
