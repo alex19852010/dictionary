@@ -30,41 +30,36 @@ int main() {
             for (map<string, string>::iterator it = directory.begin(); it != directory.end(); it++) {
                 if (surname == it->second) {
                     cout << it->first << " ";
-                    count_1 ++;
+                    count_1++;
                 }
 
             }
-            if(!count_1)
-            {
-                cout <<  "there is no such surname." << endl;
+            if (!count_1) {
+                cout << "there is no such surname." << endl;
                 continue;
             }
 
             cout << endl;
 
-        }
-
-        else if (choice == "number") {
+        } else if (choice == "number") {
             cout << "enter number:";
             cin >> number;
             int count_2 = 0;
             for (map<string, string>::iterator it = directory.begin(); it != directory.end(); it++) {
                 if (number == it->first) {
                     cout << it->second << endl;
-                    count_2 ++;
+                    count_2++;
                 }
 
             }
-                if(!count_2)
-                {
-                  cout <<  "there is no such number." << endl;
-                  continue;
-                }
-        }
-            else {
-              cout << "invalid information" << endl;
-              continue;
+            if (!count_2) {
+                cout << "there is no such number." << endl;
+                continue;
             }
+        } else {
+            cout << "invalid information" << endl;
+            continue;
+        }
 
     }
     return 0;
