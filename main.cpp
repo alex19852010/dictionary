@@ -60,7 +60,7 @@ int main() {
             cout << "invalid information" << endl;
             continue;
         }
-
+      cout << "yes";
     }
     return 0;
 }
