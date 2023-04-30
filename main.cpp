@@ -61,7 +61,9 @@ int main() {
             continue;
         }
       cout << "yes";
-        cout << "footbal";
+
+      cout << "no";
+
     }
     return 0;
 }
