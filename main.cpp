@@ -61,6 +61,7 @@ int main() {
             continue;
         }
       cout << "yes";
+      cout << "no";
     }
     return 0;
 }
