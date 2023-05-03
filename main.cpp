@@ -6,67 +6,66 @@
 using namespace std;
 
 map<string, string> numbertosurname;
-map<string, vector<string>> surnametonumber;
+multimap<string, string> surnametonumber;
 
 int main() {
+
 
     string number;
     string surname;
     vector<string> name;
     string choice;
 
+
     while (1) {
-        int count = 0;
+
+
         cout << "enter number:";
         cin >> number;
         cout << "enter surname:";
         cin >> surname;
         numbertosurname.insert(pair<string, string>(number, surname));
-        surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
+        surnametonumber.insert(pair<string, string>(surname, number));
 
-
-        for (map<string, string>::iterator it = numbertosurname.begin(); it != numbertosurname.end(); it++) {
-            if (it->second == surname) {
-                count++;
-                break;
-            }
-        }
-
-
-        if (count != 0) {
-            surnametonumber[surname].push_back(number);
-        } else {
-            surnametonumber[surname].push_back(number);
-        }
-
-
-        cout << "if you want know the number click surname or if you want know the surname click number." << endl;
-        cout << "click  surname or number:";
+        cout << "if you want to find the phone enter surname, if you want to find the surname enter number" << endl;
+        cout << "make a choice: ";
         cin >> choice;
 
         if (choice == "number") {
-            cout << "enter number:";
+            cout << "what number find:";
             cin >> number;
-            map<string, string>::iterator it = numbertosurname.find(number);
-            cout << it->second << endl;
+            auto it = numbertosurname.find(number);
 
-        } else if (choice == "surname") {
-            cout << "enter surname:";
-            cin >> surname;
-
-            map<string, vector<string>>::iterator its = surnametonumber.find(surname);
-            for (int i = 0; i < its->second.size(); i++) {
-                cout << its->second[i] << " ";
+            if (it != numbertosurname.end()) {
+                cout << it->second << endl;
+            } else {
+                cout << "invalid number" << endl;
             }
-           cout << endl;
-        } else {
-            cout << "invalid information" << endl;
+        }
+
+
+        if (choice == "surname") {
+            cout << "what surname find:";
+            cin >> surname;
+            auto its = surnametonumber.find(surname);
+
+
+            if (its != surnametonumber.end()) {
+                while (its->first == surname && its != surnametonumber.end()) {
+                    cout << its->second << " ";
+                    its++;
+                }
+                cout << endl;
+            } else {
+                cout << "invalid surname" << endl;
+            }
 
         }
 
+
     }
 
-     cout << "hello world";
+
     return 0;
 }
 
