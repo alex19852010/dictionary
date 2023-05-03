@@ -14,10 +14,9 @@ int main() {
     string surname;
     vector <string> name;
     int count = 0;
-    int temp = 3;
     int chooise = 0;
 
-    while(temp != 0)
+    while(1)
     {
         cout << "enter number:";
         cin >> number;
@@ -47,13 +46,12 @@ int main() {
         {
             surnametonumber[surname].push_back(number);
         }
-        temp --;
 
-        cout << "if you want find out the number,then press 1,if you want find out the last name,then press 2,if you want enter data, then press 3" << endl;
-        
-    }
 
-    cout << "rnter surname:";
+
+
+
+    cout << "enter surname:";
     cin >> surname;
 
     map <string, vector <string>> :: iterator its = surnametonumber.find(surname);
@@ -63,15 +61,15 @@ int main() {
         cout << its->second[i] << endl;
     }
 
-
-
-
-
-
-
-
+    }
     return 0;
 }
+
+
+
+
+
+
 
 
 
