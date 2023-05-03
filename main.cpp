@@ -22,7 +22,7 @@ int main() {
         cout << "enter surname:";
         cin >> surname;
         numbertosurname.insert(pair<string, string>(number, surname));
-        surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
+//        surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
 
 
         for (map<string, string>::iterator it = numbertosurname.begin(); it != numbertosurname.end(); it++) {
@@ -35,8 +35,11 @@ int main() {
 
         if (count != 0) {
             surnametonumber[surname].push_back(number);
+            surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
+
         } else {
-            surnametonumber[surname].push_back(number);
+
+            surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
         }
 
 
