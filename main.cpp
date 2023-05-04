@@ -16,32 +16,17 @@ int main() {
     string choice;
 
     while (1) {
-        int count = 0;
         cout << "enter number:";
         cin >> number;
         cout << "enter surname:";
         cin >> surname;
         numbertosurname.insert(pair<string, string>(number, surname));
-//        surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
+//      surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
 
-
-        for (map<string, string>::iterator it = numbertosurname.begin(); it != numbertosurname.end(); it++) {
-            if (it->second == surname) {
-                count++;
-                break;
-            }
-        }
-
-
-        if (count != 0) {
+        if (numbertosurname.find(surname) == numbertosurname.end()) {
             surnametonumber[surname].push_back(number);
+        } else
             surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
-
-        } else {
-
-            surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
-        }
-
 
         cout << "if you want know the number click surname or if you want know the surname click number." << endl;
         cout << "click  surname or number:";
@@ -61,14 +46,17 @@ int main() {
             for (int i = 0; i < its->second.size(); i++) {
                 cout << its->second[i] << " ";
             }
+
             cout << endl;
+
         } else {
             cout << "invalid information" << endl;
 
         }
 
+
     }
-cout << "hello basketball";
+
+
     return 0;
 }
-
