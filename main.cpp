@@ -68,7 +68,7 @@ int main() {
         }
 
     }
-cout << "hello footbal";
+cout << "hello basketball";
     return 0;
 }
 
