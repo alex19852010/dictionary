@@ -23,7 +23,7 @@ int main() {
         numbertosurname.insert(pair<string, string>(number, surname));
 //      surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
 
-        if (numbertosurname.find(surname) == numbertosurname.end()) {
+        if (numbertosurname.find(surname) != numbertosurname.end()) {
             surnametonumber[surname].push_back(number);
         } else
             surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
