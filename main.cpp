@@ -22,7 +22,9 @@ int main() {
         cin >> surname;
         numbertosurname.insert(pair<string, string>(number, surname));
 
-        if (numbertosurname.find(surname) != numbertosurname.end()) {
+
+
+        if (surnametonumber.count(surname) != 0) {
             surnametonumber[surname].push_back(number);
         } else
             surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
