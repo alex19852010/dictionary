@@ -5,60 +5,51 @@
 
 using namespace std;
 
-
 map<string, string> numbertosurname;
-map<string, vector<string>> surnametonumber;
+map<string, vector<string >> surnametonumber;
+
+string number;
+string surname;
+string choice;
 
 int main() {
-    string number;
-    string surname;
-    vector<string> name;
-    string choice;
-
-    while (1) {
-        cout << "enter number:";
-        cin >> number;
-        cout << "enter surname:";
-        cin >> surname;
-        numbertosurname.insert(pair<string, string>(number, surname));
-
-
-
-        if (surnametonumber.count(surname) != 0) {
-            surnametonumber[surname].push_back(number);
-        } else
-            surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
-        surnametonumber[surname].push_back(number);
-
-        cout << "if you want know the number click surname or if you want know the surname click number." << endl;
-        cout << "click  surname or number:";
-        cin >> choice;
-
-        if (choice == "number") {
+    while(1)
+    {
+        while (choice != "number" && choice != "surname") {
             cout << "enter number:";
             cin >> number;
-            map<string, string>::iterator it = numbertosurname.find(number);
-            cout << it->second << endl;
-
-        } else if (choice == "surname") {
             cout << "enter surname:";
             cin >> surname;
 
-            map<string, vector<string>>::iterator its = surnametonumber.find(surname);
-            for (int i = 0; i < its->second.size(); i++) {
-                cout << its->second[i] << " ";
-            }
-
-            cout << endl;
-
-        } else {
-            cout << "invalid information" << endl;
+            numbertosurname.insert(pair<string, string> (number,surname));
+            cout << "if you want to know number, enter number, if you want to know surname, enter surname:" << endl;
+            cout << "make a choice: ";
+            cin >> choice;
 
         }
+
+        if(choice == "surname")
+            cout << "enter number:";
+        cin >> number;
+        auto it = numbertosurname.find(number);
+        if(it != numbertosurname.end())
+        {
+            cout << it->second << endl;
+            choice = "";
+            continue;
+        }
+        else
+        {
+            cout << "invalid number" << endl;
+            choice = "";
+            continue;
+        }
+
 
 
     }
 
 
     return 0;
+
 }
