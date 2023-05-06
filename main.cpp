@@ -25,8 +25,22 @@ int main() {
 
             auto its = surnametonumber.find(surname);
             if (its != surnametonumber.end()) {
-                surnametonumber[surname].push_back(number);
-            } else {
+//                surnametonumber[surname].push_back(number);
+                for (int i = 0; i < its->second.size(); i++) {
+                    if(number == its->second[i])
+                    {
+                        count ++;
+                    }
+                }
+            }
+
+
+        if (its != surnametonumber.end() && count == 0) {
+
+            surnametonumber[surname].push_back(number);
+        }
+
+            if(its == surnametonumber.end()) {
                 surnametonumber.insert(pair<string, vector<string>>(surname, vector<string>()));
                 surnametonumber[surname].push_back(number);
             }
@@ -45,10 +59,12 @@ int main() {
             if (it != numbertosurname.end()) {
                 cout << it->second << endl;
                 choice = "";
+                count = 0;
                 continue;
             } else {
                 cout << "invalid number" << endl;
                 choice = "";
+                count = 0;
                 continue;
             }
 
@@ -65,10 +81,12 @@ int main() {
                 }
                 cout << endl;
                 choice = "";
+                count = 0;
                 continue;
             } else {
                 cout << "invalid surname" << endl;
                 choice = "";
+                count = 0;
                 continue;
             }
 
