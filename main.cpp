@@ -11,16 +11,18 @@ map<string, vector<string >> surnametonumber;
 string number;
 string surname;
 string choice;
+int count = 0;
 
 int main() {
     while (1) {
-        while (choice != "number" && choice != "surname") {
+
             cout << "enter number:";
             cin >> number;
             cout << "enter surname:";
             cin >> surname;
 
             numbertosurname.insert(pair<string, string>(number, surname));
+
             auto its = surnametonumber.find(surname);
             if (its != surnametonumber.end()) {
                 surnametonumber[surname].push_back(number);
@@ -33,7 +35,7 @@ int main() {
             cout << "make a choice: ";
             cin >> choice;
 
-        }
+
 
         if (choice == "surname") {
             cout << "enter number:";
