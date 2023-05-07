@@ -11,21 +11,21 @@ map<string, vector<string >> surnametonumber;
 string number;
 string surname;
 string choice;
+string val;
 int count = 0;
 
 int main() {
     while (1) {
 
-            cout << "enter number:";
+            cout << "add number:";
             cin >> number;
-            cout << "enter surname:";
+            cout << "add surname:";
             cin >> surname;
 
             numbertosurname.insert(pair<string, string>(number, surname));
 
             auto its = surnametonumber.find(surname);
             if (its != surnametonumber.end()) {
-//                surnametonumber[surname].push_back(number);
                 for (int i = 0; i < its->second.size(); i++) {
                     if(number == its->second[i])
                     {
@@ -45,47 +45,34 @@ int main() {
                 surnametonumber[surname].push_back(number);
             }
 
-            cout << "if you want to know number, enter number, if you want to know surname, enter surname:" << endl;
-            cout << "make a choice: ";
+            cout << "enter number abonent:" << endl;
             cin >> choice;
 
 
-
-        if (choice == "surname") {
-            cout << "enter number:";
-            cin >> number;
-            auto it = numbertosurname.find(number);
-
+            auto it = numbertosurname.find(choice);
             if (it != numbertosurname.end()) {
-                cout << it->second << endl;
-                choice = "";
+                val = it->second;
+                cout << it->second << " ";
                 count = 0;
-                continue;
+
             } else {
                 cout << "invalid number" << endl;
-                choice = "";
                 count = 0;
                 continue;
             }
 
-        }
 
-        if (choice == "number") {
-            cout << "enter surname:";
-            cin >> surname;
-            auto m = surnametonumber.find(surname);
-
+            auto m = surnametonumber.find(val);
             if (m != surnametonumber.end()) {
                 for (int i = 0; i < m->second.size(); i++) {
                     cout << m->second[i] << " ";
                 }
                 cout << endl;
-                choice = "";
                 count = 0;
                 continue;
+
             } else {
                 cout << "invalid surname" << endl;
-                choice = "";
                 count = 0;
                 continue;
             }
@@ -93,7 +80,7 @@ int main() {
 
         }
 
-    }
+
 
 
     return 0;
